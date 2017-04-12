@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link href="css/style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body onreSize="reSize()">
+
+	<div id="con"></div>
+	<div id="anniu">
+		<input type="button" value="开始游戏" onclick="begin()">&nbsp;
+		<input type="button" value="暂停游戏" onclick="stop()">&nbsp;
+		<input type="button" value="重玩游戏" onclick="replay()">&nbsp;&nbsp;
+		得分：<span id="mark">0</span>&nbsp;&nbsp;
+		失分：<span id="losemark">0</span>&nbsp;&nbsp;
+		得分率：<span id="per">0%</span>
+	</div>
+	<div id="jilu">练习记录(红色是打错的)：</div>
+</body>
+</html>
+<script type="text/javascript" src="js/js.js"></script>

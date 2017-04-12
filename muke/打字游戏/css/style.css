@@ -1,0 +1,33 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+body{
+	background:#000;
+}
+#con{
+	width:90%;
+	height:500px;
+	margin:0 auto;
+	border:2px solid #999;
+	position:relative;
+	overflow:hidden;
+}
+#anniu{
+	width:90%;
+	height:40px;
+	margin:0 auto;
+	border:2px solid #999;
+	color:#fff;
+	text-align:center;
+}
+#jilu{
+	width:90%;
+	height:30px;
+	margin:0 auto;
+	border:2px solid #999;
+	color:#fff;
+}
+#jilu span{
+	color:#f00;
+}
