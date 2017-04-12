@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  color: #4f928d;
+  font-weight: normal;
+}
+div.sound {
+  width: 300px;
+  margin: 50px auto;
+  outline: 1px solid red;
+  font-size: 0;
+}
+div.sound section.sound-content {
+  width: 150px;
+  display: inline-block;
+  font-size: 18px;
+}
+div.sound section.sound-content a img {
+  border-radius: 100%;
+}
+/*# sourceMappingURL=index.css.map */
