@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{margin: 0;}
+        body{width: 100%;}
+        /*计算要精确，不要让内用的宽高大于设置的宽高
+        在ie6下会撑开设置的宽高
+        */
+        .box1{width: 400px;height: 300px;margin-bottom:2px; }
+        .box1 .left{width: 200px;height: 300px;background:red;float: left;}
+        .box1 .right{ width: 200px;float: right;}
+        .box1 .ri-div{width: 180px;height:180px;background: blue;padding: 15px;}
+
+        /*
+        在ie6元素浮动，如果宽度需要内容撑开，就要给里面的块元素都加浮动
+        */
+        .box2{width: 400px;height: 40px;}
+        .box2 .left{background:red;float: left;}
+        .box2 .right{background: blue;float: right;}
+        .box2 h3{margin: 0;height: 30px;float: left;}
+
+        /*在ie6-7下元素要通过浮动并在同一行，就给这行元素都加上浮动*/
+        .box3{height:110px;}
+        .box3 .left{width: 100px;height: 100px; background:red;float: left;}
+        .box3 .right{width: 200px;height: 100px; background: blue;float: left;}
+
+        /*注意标签嵌套规范*/
+        .box4{height:100px;}
+        .box4 p{width: 100px;height: 100px; background:red;}
+
+        /*ie6下的最小高度问题
+            ie6下元素的高度小于19px的时候，会被当作19px来处理
+            解决办法：添加overflow: hidden
+        */
+        .box5{height:2px; background:red;overflow: hidden;}
+
+        /*1px dotted 在IE6下不支持
+        解决办法切背景平铺
+        */
+        .box6{width: 100px;height: 100px;border:1px dotted red;}
+
+
+    </style>
+</head>
+<body>
+<!--////////在ie6下会撑开设置的宽高/////////-->
+<div class="box1">
+    <div class="left">1</div>
+    <div class="right">
+        <div class="ri-div"></div>
+    </div>
+</div>
+<!--////在ie6元素浮动，如果宽度需要内容撑开，就要给里面的块元素都加浮动//////////-->
+<div class="box2">
+    <div class="left">
+        <h3>左侧2</h3>
+    </div>
+    <div class="right">
+        <h3>右侧</h3>
+    </div>
+</div>
+<!--//////////////////////////////////-->
+<div class="box3">
+    <div class="left">3</div>
+    <div class="right"></div>
+</div>
+<!--//////////////////////////////////-->
+<div class="box4">
+    <p>
+    <h3>4</h3>
+    </p>
+</div>
+<!--//////////////////////////////////-->
+<div class="box5">5</div>
+<!--//////////////////////////////////-->
+<div class="box6">6</div>
+
+</body>
+</html>

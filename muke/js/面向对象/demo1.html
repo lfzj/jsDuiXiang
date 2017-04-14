@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象</title>
+    <script type="text/javascript">
+
+/*   1.什么是对象
+     2.什么叫面向对象
+     面向对象编程的特点：
+     1.抽象：抓住核心问题
+     2.封装：不考虑内部的实现，只考虑功能的使用
+     3.继承：从已有对象上，继承出新的对象
+     多重继承和多态
+     对象的组成
+     1. 方法--函数：过程、动态的
+     2.属性--变量：状态、静态
+*/
+        var arr =[1,2,3,4,5,6];
+        var a = 2;  // 为变量：自由
+        arr.a = 3;  // 为属性：属于一个对象
+        console.log(typeof arr)
+        function show(){  //  为函数
+            console.log("a")
+        }
+        console.log(show())
+        arr.fn = function(){ //  为方法
+            console.log('f')
+        }
+        console.log(arr.fn())
+
+//------------第一个面向对象的函数-------------------------
+             var arr =[1,2,3,4,5,6];
+//          this：当前的方法，属于谁
+            arr.show = function(){
+                console.log(this.length)
+            }
+         console.log(arr.show())
+
+//--------第一个函数----------------
+/*       工厂方式的问题
+*           1.没有new
+*           2.每个对象都有一套自己的函数--浪费资源
+*/
+
+        function createPerson(name,sex) { // 构造函数 为工厂方式
+            /* 1.原料 */
+            var obj = new Object();
+            /*2.加工*/
+            obj.name = name;
+            obj.sex = sex;
+            obj.showName = function () {
+                console.log('我的名字叫：'+this.name);
+            };
+            obj.showSex = function(){
+                console.log('我是'+this.sex+'的');
+            };
+            /* 3.出厂*/
+            return obj;
+        }
+
+        var p1 = createPerson('liufu','男');
+        var p2 = createPerson('liangyu','女');
+        p1.showName();
+        p1.showSex();
+        p2.showName();
+        p2.showSex();
+
+//--------第二个函数----------------
+        function CreatePerson1(name,sex) {  //构造函数 为工厂方式
+            //属性：每个对象都各不相同
+            this.name = name;
+            this.sex = sex;
+        };
+        /*给自己添加方法 如下：*/
+        //方法：所有对象都一样
+        CreatePerson1.prototype.showName = function () {
+            console.log('我的名字叫：' + this.name);
+        };
+        CreatePerson1.prototype.showSex = function () {
+            console.log('我是' + this.sex + '的');
+        };
+        var p1 =new CreatePerson1('liufu111','男');
+        var p2 =new CreatePerson1('liangyu111','女');
+        p1.showName();
+        p1.showSex();
+        p2.showName();
+        p2.showSex();
+console.log(p1.showName==p2.showName)
+
+//--------第三个函数---原型函数----------------
+        var arr1 = new Array(12,5,8);
+        var arr2 = new Array(12,6,8,9);
+//        arr1.sun=function () {
+        Array.prototype.sun = function(){
+            var result = 0;
+            var i = 0;
+            for(i=0;i<this.length;i++){
+                result+=this[i];
+            };
+            return result;
+        }
+        console.log(arr1.sun());
+        console.log(arr2.sun());
+        console.log(arr1.sun==arr.sun);
+
+//--------第三个函数---原型函数----优先级------------
+        Array.prototype.a =12;
+        var arr = [1,5,8,6];
+        console.log(arr.a)
+        arr.a=5;
+        console.log(arr.a)
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body,div,ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .swipr{
+            width: 500px;
+            height: 300px;
+            border: 1px solid red;
+            overflow: hidden;
+            margin: 50px auto;
+        }
+        .tab{
+            width: 100%;
+            height: 80px;
+            line-height: 80px;
+            border-bottom: 1px solid red;
+            display: flex;
+            text-align: center;
+        }
+        .tab li{
+            flex:1;
+            border-right: 1px solid red;
+        }
+        .tab li:last-child{
+            border-right:none;
+        }
+        .content{
+            width: 100%;
+            height: 219px;
+            overflow: hidden;
+        }
+        .content-tent{
+            width: 100%;
+            height: 219px;
+            float: left;
+            display: none;
+        }
+        .di{
+            display: block;
+        }
+        .red{color: red;}
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var otab=new TabSwitch('ul1','contentid')
+        };
+        function TabSwitch(id1,id2){
+            var oul = document.getElementById(id1);
+            var oDiv = document.getElementById(id2);
+            this.aBth = oul.getElementsByTagName("li");
+            this.con = oDiv.getElementsByTagName("div");
+            // this的问题
+            var _this=this;
+            for(var i=0; i<this.aBth.length;i++){
+                this.aBth[i].index=i;
+                this.aBth[i].onclick = function () {
+                    _this.tab(this)
+                };
+            };
+        };
+        TabSwitch.prototype.tab = function (aBth1) {
+            for (var i= 0;i<this.aBth.length;i++ ){
+                this.aBth[i].className='';
+                this.con[i].style.display='none';
+            }
+            aBth1.className="red";
+            this.con[aBth1.index].style.display='block';
+        }
+
+    </script>
+</head>
+<body>
+<div class="swipr">
+    <ul id="ul1" class="tab">
+        <li class="red">按钮1</li>
+        <li>按钮2</li>
+        <li>按钮3</li>
+    </ul>
+    <div id="contentid" class="content">
+        <div class="content-tent di">jhjh1</div>
+        <div class="content-tent">jhjh2</div>
+        <div class="content-tent">jhjh3</div>
+    </div>
+</div>
+</body>
+</html>

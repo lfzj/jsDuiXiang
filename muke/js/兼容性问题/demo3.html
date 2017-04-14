@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{margin: 0;}
+        /*ie6下的双边距bug
+        在ie6，块元素有浮动和横向margin值横向的margin的值会被放大两倍
+        解决办法：display:inline
+        */
+        .box1{width: 200px;height: 200px;background: red;float: left;margin: 100px;
+            display:inline;}
+
+        /*
+        margin-left 一行左侧第一个元素有双边距
+        margin-right 一行右侧第一个元素有双边距
+        */
+        .box2{float: left;border: 10px solid #000;}
+        .box2 div{width: 100px;height: 100px;background: red;border: 5px solid #ccc;
+        margin-left: 20px;float: left; }
+
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+</body>
+</html>

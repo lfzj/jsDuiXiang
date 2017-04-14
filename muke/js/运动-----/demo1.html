@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #box{width: 50px;height: 50px;border: 1px solid red;position: absolute;left: 0;top: 100px;}
+    </style>
+    <script type="text/javascript">
+
+//        window.onload = function () {
+//
+//            var inp=document.getElementById("but");
+//            inp.onclick=startMove;
+//        }
+var tiem=null;
+        function startMove() {
+
+            var oDiv=document.getElementById("box");
+            tiem=setInterval(function () {
+                if(oDiv.offsetLeft==300){
+                    clearInterval(tiem);
+                }
+                oDiv.style.left=oDiv.offsetLeft+10+'px';
+            },30)
+        }
+    </script>
+</head>
+<body>
+<input id="but" type="button" value="开启运动" onclick="startMove()">
+<div id="box"></div>
+</body>
+</html>

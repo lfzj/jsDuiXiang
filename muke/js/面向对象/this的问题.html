@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+      window.onload =function () {
+          new Obut();
+      }
+
+      function Obut() {
+          this.t=12;
+          var _this=this;
+          document.getElementById("but1").onclick=function () {
+              _this.show();
+          }
+      }
+      Obut.prototype.show=function () {
+          alert(this.t)
+      }
+//----------------------------------------------------------
+        function aaa() {
+            this.a=12;
+            //  setInterval(this.show,1000) 这里面的this指的是window
+            //要这样才行
+            var _this = this;
+            setInterval(function () {
+                _this.show();
+            },10000)
+        }
+        aaa.prototype.show = function () {
+            alert(this.a)
+        }
+        var obj = new aaa();
+//        obj.show()  //上面的this是obj
+    </script>
+</head>
+<body>
+<input type="button" id="but1" value="按钮">
+</body>
+</html>
