@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #box{width: 100px;height: 100px;background: red;position: absolute;}
+        .box2{width: 1px;height: 200px;background: #000;position: absolute;left: 300px;}
+    </style>
+    <script type="text/javascript">
+        window.onload=function () {
+            var oBut = document.getElementById('but');
+            var oDiv = document.getElementById('box');
+            var iSpeed=0;
+            oBut.onclick=function () {
+                var iSpeed=0;
+                setInterval(function () {
+                    iSpeed+=(300-oDiv.offsetLeft)/5;
+                    iSpeed*=0.7;
+                    oDiv.style.left=oDiv.offsetLeft+iSpeed+'px';
+                },30);
+
+            }
+        }
+    </script>
+</head>
+<body>
+<input id="but" type="button" value="开启">
+<div id="box"></div>
+<div class="box2"></div>
+</body>
+</html>

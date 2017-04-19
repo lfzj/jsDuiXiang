@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #box1{width: 100px;height: 100px;background: red;}
+    </style>
+    <script src="move.js"></script>
+    <script type="text/javascript">
+            window.onload=function () {
+                var obut = document.getElementById('but1');
+                var oDiv = document.getElementById('box1');
+                obut.onclick=function () {
+                    startMove(oDiv,'width',300,function () {
+                        startMove(oDiv,'height',300)
+                    })
+                }
+            }
+    </script>
+</head>
+<body>
+<input id="but1" type="button" value="开启运动">
+<div id="box1"></div>
+</body>
+</html>

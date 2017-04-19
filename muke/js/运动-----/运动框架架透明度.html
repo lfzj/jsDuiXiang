@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #box2{
+            width: 100px;height: 100px;background: red;filter: alpha(opacity:30);opacity: 0.3;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload =function () {
+            var oDiv = document.getElementById('box2');
+            oDiv.onmouseover=function () {
+                startMove(oDiv,'opacity',100);
+            }
+            oDiv.onmouseout=function () {
+                startMove(oDiv,'opacity',30);
+            }
+        }
+
+        //这个函数是获取行外样式的
+        function getStyle(obj,attr) {
+            if (obj.currentStyle){
+                return obj.currentStyle[attr];
+            }else {
+                return getComputedStyle(obj,false)[attr];
+            };
+        };
+        function startMove(obj,attr,iTarget) {
+            clearInterval(obj.timer);
+            var iSpeed=0;
+            obj.timer=setInterval(function () {
+                if(attr=='opacity'){
+                    var iCur = parseInt(parseFloat(getStyle(obj,attr))*100);
+                }else {
+                    var iCur = parseInt(getStyle(obj,attr));
+                }
+                iSpeed= (iTarget-iCur)/8;
+                iSpeed = iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+                if (iTarget==iCur){
+                    clearInterval(obj.timer)
+                }else {
+                    if(attr=='opacity'){
+                        obj.style.filter= 'alpha(opacity:'+(iCur+iSpeed)+')';
+                        obj.style.opacity=(iCur+iSpeed)/100;
+                    }else {
+                        obj.style[attr]=iCur+iSpeed+'px';
+                    }
+
+                }
+            },30);
+        };
+    </script>
+</head>
+<body>
+<div id="box2"></div>
+</body>
+</html>

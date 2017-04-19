@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #box{width: 100px;height: 100px;background: red;position: absolute;
+            left: 500px;top: 50px;}
+        .box2{width: 1px;height: 100px;position: absolute;left: 300px;background: #000;}
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var but1 = document.getElementById('but1');
+            but1.onclick=function () {
+                startMove(300)
+            };
+
+        }
+        var timer=null;
+        function startMove(iTarget) {
+            var aDiv = document.getElementById('box');
+//            var iSpeed = 1;
+            var iSpeed =(iTarget-aDiv.offsetLeft)/199;
+            iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+            clearInterval(timer);  //每点击一次先让定时器先关闭再开，这样不会每次点击都开
+
+            timer=setInterval(function () {
+
+//                Math.abs(aDiv.offsetLeft-iTarget) 这个可以让他到达附近
+                if (Math.abs(aDiv.offsetLeft-iTarget)<7){  //是否到达终点
+                    clearInterval(timer);   //到达终点
+                    aDiv.style.left=iTarget+'px';
+
+                }else { //加这个else，执行完再点击不再跑了
+                    aDiv.style.left=aDiv.offsetLeft+iSpeed+'px';
+//                    aDiv.innerHTML=aDiv.offsetLeft;
+
+                }
+
+            },30)
+        }
+    </script>
+</head>
+<body>
+<input id="but1" type="button" value="开启运动">
+<div id="box"></div>
+<div class="box2"></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{height: 2000px;}
+        #box1{width: 100px;height: 100px;position: absolute;right: 0;background: red;}
+    </style>
+    <script type="text/javascript">
+        window.onscroll = function () {
+            var oDiv = document.getElementById('box1');
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var ch = document.documentElement.clientHeight;
+            var oDivh = oDiv.offsetHeight;
+            var t = scrollTop+(ch-oDivh)/2;
+//            oDiv.style.top=t+'px'
+            startMove(parseInt(t));
+        }
+        var timer = null;
+        function startMove(iTarget) {
+            var oDiv = document.getElementById('box1');
+            clearInterval(timer);
+            timer = setInterval(function () {
+                //缓冲运动
+                var iSpeed = (iTarget - oDiv.offsetTop)/60;
+                //速度值    上取整：下取整
+                iSpeed = iSpeed>0? Math.ceil(iSpeed):Math.floor(iSpeed);
+                //是否到达终点
+                if (Math.abs(oDiv.offsetTop - iTarget)<7){
+                    clearInterval(timer)
+                    oDiv.style.top=iTarget+'px';
+                }else {
+                    oDiv.style.top=oDiv.offsetTop+iSpeed+'px';
+                    oDiv.innerHTML=iTarget;
+                }
+
+            },30)
+        }
+    </script>
+</head>
+<body>
+<div id="box1"></div>
+</body>
+
+</html>

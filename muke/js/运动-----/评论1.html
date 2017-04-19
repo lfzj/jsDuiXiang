@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        #ul1{width: 200px;height: 200px;border: 1px solid red;margin: 100px auto;overflow: hidden;}
+        #ul1 div{border-bottom: 1px dotted #999;list-style: none;
+        filter: alpha(opacity:0);opacity: 0;padding: 5px;}
+    </style>
+    <script src="move2.js"></script>
+    <script type="text/javascript">
+        window.onload=function () {
+            var oTxt1 = document.getElementById('txt1');
+            var oTxt2 = document.getElementById('txt2');
+            var oUl = document.getElementById('ul1');
+            oTxt2.onclick =function () {
+                var oLi = document.createElement('div');
+                var aLi =oUl.getElementsByTagName('div');
+                oLi.innerHTML=oTxt1.value;
+                oTxt1.value="";
+                if (aLi.length){
+                    oUl.insertBefore(oLi,aLi[0]);
+                }else {
+                    oUl.appendChild(oLi);
+                }
+                var iHeight = oLi.offsetHeight;
+//                oLi.style.lineHeight=iHeight+'px';
+                oLi.style.height=0;
+                startMove(oLi,{'height': iHeight},function () {
+                    startMove(oLi,{'opacity':100})
+                })
+            }
+        }
+    </script>
+</head>
+<body>
+<textarea id="txt1" rows="10" cols="30"></textarea><br>
+<input id="txt2" type="button" value="发布111111">
+<!--//这个不能用ul li标签-->
+<div id="ul1">
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #img1{filter: alpha(opacity:30);/* 兼容ie*/opacity: 0.3;}
+    </style>
+    <script type="text/javascript">
+
+        window.onload=function () {
+            var aImg = document.getElementById('img1');
+            aImg.onmousemove=function () {
+                startMove(100);
+            };
+            aImg.onmouseout=function () {
+                startMove(30);
+            };
+        };
+        var timer = null;
+        var alpha = 30;
+        function startMove(iTarget) {
+            var aImg = document.getElementById('img1');
+            clearInterval(timer);
+            timer = setInterval(function () {
+                var iSpeed = 0;
+                iSpeed = alpha<iTarget ? 10 : -10;
+                if (alpha==iTarget){
+                    clearInterval(timer)
+                }else {
+                    alpha+=iSpeed;
+                    aImg.style.filter='alpha(opacity:'+alpha+')';
+                    aImg.style.opacity=alpha/100;
+                }
+            },30)
+        }
+    </script>
+</head>
+<body>
+<img id="img1" src="4.jpg" alt="">
+</body>
+</html>

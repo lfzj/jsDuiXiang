@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #box{width: 100px;height: 100px;background: red;filter: alpha(opacity:30);opacity:0.3;}
+    </style>
+    <script src="move2.js"></script>
+    <script type="text/javascript">
+        window.onload=function () {
+            var oDiv = document.getElementById('box');
+            var oBut =document.getElementById('but');
+            oBut.onclick=function () {
+                startMove(oDiv,{'width':106,'height':300,'opacity':100})
+            }
+        }
+    </script>
+</head>
+<body>
+<input id="but" type="button" value="开启运动">
+<div id="box"></div>
+</body>
+</html>
